@@ -1,0 +1,22 @@
+startup_message off
+vbell off
+
+hardstatus alwayslastline "%{=b}%{G} %{b}%w %=%{kG}%C%A %D,%d/%m/%y"
+shelltitle "Shell"
+
+# Window numbering starts at 1, not 0.
+bind c screen 1
+bind 0 select 10
+
+# # Look and feel
+caption always "%{= 2m}%{+b w}Screen: %n | %h %=%t %D %d/%m/%y %c:%s"
+hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<  %=% [%{=b)%{Y}%l%{g}]"
+
+# Left Right meta key mods
+#  ALT-,. and ALT-<>
+bindkey "^[<" eval number !echo $WINDOW-1|bc
+bindkey "^[>" eval number !echo $WINDOW+1|bc
+bindkey "^[," prev
+bindkey "^[." next
+
+select 1
