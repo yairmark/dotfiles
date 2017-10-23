@@ -39,12 +39,14 @@ apt_packages+=(
   jq
   mercurial
   nmap
+  p7zip-full
   postgresql
   python-pip
   silversearcher-ag
   sl
   telnet
   tree
+  yakuake
 )
 
 apt_packages+=(vim)
@@ -64,6 +66,10 @@ apt_packages+=(
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-16-04
 add_ppa ppa:ansible/ansible
 apt_packages+=(ansible)
+
+# https://github.com/clvv/fasd/wiki/Installing-via-Package-Managers
+add_ppa ppa:aacebedo/fasd
+apt_packages+=(fasd)
 
 if is_ubuntu_desktop; then
   # http://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-04
