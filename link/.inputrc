@@ -2,9 +2,11 @@ set editing-mode vi
 
 # COMMAND MODE
 set keymap vi-command
+Control-l: clear-screen 
 
 # INSERT MODE
 set keymap vi-insert
+Control-l: clear-screen 
 
 # Up/down arrows search history
 "\e[A": history-search-backward
