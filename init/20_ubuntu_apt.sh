@@ -121,6 +121,7 @@ if is_ubuntu_desktop; then
     chromium-browser
     fonts-mplus
     k4dirstat
+    konsole
     rofi
     network-manager-openconnect
     network-manager-openconnect-gnome
