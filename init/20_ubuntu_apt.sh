@@ -39,6 +39,7 @@ apt_packages+=(
   jq
   mercurial
   nmap
+  p7zip-full
   postgresql
   python-pip
   silversearcher-ag
