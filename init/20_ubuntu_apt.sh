@@ -46,6 +46,8 @@ apt_packages+=(
   sl
   telnet
   tree
+  virtualbox
+  virtualbox-ext-pack
   yakuake
 )
 
@@ -95,12 +97,6 @@ if is_ubuntu_desktop; then
   apt_source_files+=(aluxian)
   apt_source_texts+=("deb https://dl.bintray.com/aluxian/deb/ beta main")
   apt_packages+=(messengerfordesktop)
-
-  # https://tecadmin.net/install-oracle-virtualbox-on-ubuntu/
-  apt_keys+=(https://www.virtualbox.org/download/oracle_vbox_2016.asc)
-  apt_source_files+=(virtualbox)
-  apt_source_texts+=("deb http://download.virtualbox.org/virtualbox/debian $release_name contrib")
-  apt_packages+=(virtualbox-5.1)
 
   # http://askubuntu.com/a/190674
   add_ppa ppa:webupd8team/java
