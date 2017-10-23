@@ -90,24 +90,11 @@ if is_ubuntu_desktop; then
   apt_source_texts+=("deb https://dl.bintray.com/aluxian/deb/ beta main")
   apt_packages+=(messengerfordesktop)
 
-  # https://www.spotify.com/us/download/linux/
-  apt_keys+=('--keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886')
-  apt_source_files+=(spotify)
-  apt_source_texts+=("deb http://repository.spotify.com stable non-free")
-  apt_packages+=(spotify-client)
-
   # https://tecadmin.net/install-oracle-virtualbox-on-ubuntu/
   apt_keys+=(https://www.virtualbox.org/download/oracle_vbox_2016.asc)
   apt_source_files+=(virtualbox)
   apt_source_texts+=("deb http://download.virtualbox.org/virtualbox/debian $release_name contrib")
   apt_packages+=(virtualbox-5.1)
-
-  # https://www.skype.com/en/download-skype/skype-for-linux/
-  # https://community.skype.com/t5/Linux/Skype-for-Linux-Beta-signatures-couldn-t-be-verified-because-the/td-p/4645756
-  apt_keys+=(https://repo.skype.com/data/SKYPE-GPG-KEY)
-  apt_source_files+=(skype)
-  apt_source_texts+=("deb  https://repo.skype.com/deb stable main")
-  apt_packages+=(skypeforlinux)
 
   # http://askubuntu.com/a/190674
   add_ppa ppa:webupd8team/java
@@ -147,15 +134,6 @@ if is_ubuntu_desktop; then
   # Manage online accounts via "gnome-control-center" in launcher
   apt_packages+=(gnome-control-center gnome-online-accounts)
 
-  # https://github.com/mitchellh/vagrant/issues/7411
-  deb_installed+=(/usr/bin/vagrant)
-  deb_sources+=(https://releases.hashicorp.com/vagrant/1.9.2/vagrant_1.9.2_x86_64.deb)
-  # https://github.com/vagrant-libvirt/vagrant-libvirt/issues/575
-  # apt_packages+=(vagrant)
-  # function postinstall_vagrant() {
-  #   sudo sed -i'' "s/Specification.all = nil/Specification.reset/" /usr/lib/ruby/vendor_ruby/vagrant/bundler.rb
-  # }
-
   # https://launchpad.net/grub-customizer
   add_ppa ppa:danielrichter2007/grub-customizer
   apt_packages+=(grub-customizer)
@@ -178,30 +156,6 @@ if is_ubuntu_desktop; then
     echo http://ftp.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
   }
 
-  # https://slack.com/downloads/instructions/linux
-  deb_installed+=(/usr/bin/slack)
-  deb_sources+=(https://downloads.slack-edge.com/linux_releases/slack-desktop-2.5.2-amd64.deb)
-
-  # https://discordapp.com/download
-  deb_installed+=(/usr/bin/discord)
-  deb_sources+=("https://discordapp.com/api/download?platform=linux&format=deb")
-
-  # http://askubuntu.com/questions/854480/how-to-install-the-steam-client/854481#854481
-  apt_packages+=(python-apt)
-  deb_installed+=(/usr/bin/steam)
-  deb_sources+=(deb_source_steam)
-  function deb_source_steam() {
-    local steam_root steam_file
-    steam_root=http://repo.steampowered.com/steam/pool/steam/s/steam/
-    steam_file="$(wget -q -O- "$steam_root?C=M;O=D" | sed -En '/steam-launcher/{s/.*href="([^"]+)".*/\1/;p;q;}')"
-    echo "$steam_root$steam_file"
-  }
-  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=772598
-  # apt_packages+=(steam)
-  # function preinstall_steam() {
-  #   echo steam steam/question select I AGREE | sudo debconf-set-selections
-  #   echo steam steam/license note | sudo debconf-set-selections
-  # }
 fi
 
 function other_stuff() {
